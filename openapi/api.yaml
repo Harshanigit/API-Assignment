@@ -165,7 +165,8 @@ components:
         Surname:
           type: string
           example: "Kemppainen"
-      required:
-        - id
-        - Firstname
-        - Surname
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    
