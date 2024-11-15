@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
+import { getUsers } from '../database.js'
 let router = Router()
+
 
 let users = [
     { "username": "jk", "password": "sala",'token': ' '},
@@ -9,9 +11,6 @@ let users = [
 
 ]
 
-export const getUsers = () => { // use method
-    return users
-}
 
 
 router.post('/', (req,res) => {
@@ -23,7 +22,18 @@ router.post('/', (req,res) => {
         const token = jwt.sign({username: username}, 'my_secret_key', {
             expiresIn: '1h' // token valid time //reference token & access token .one is for reference the other one is for getting data
         }) //return access token to customer
-        
+
+        const refreshToken = jwt.sign({username: username}, 'my_secret_key', {
+            expiresIn: '1d' 
+        }) 
+
+      /*res.cookie('refreshToken', refreshToken,{ httpOnly: true, sameSite: 'strict'})
+        .header('Authorization','Bearer' +accesTtoken)
+        .json({
+            "username": username,
+            "expires_in": "1h"
+        });
+      */  
         //first check user name & then check password
         user.token = token; // know now this token goes to that user
         res.json ({

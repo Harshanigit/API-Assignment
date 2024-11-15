@@ -1,6 +1,7 @@
 import { Router } from 'express';
 let router = Router()
 
+
 let data = [
     { "id": "1", "Firstname": "Jyri", "Surname": "Kemppainen" },
     { "id": "2", "Firstname": "Petri", "Surname": "Laitinen" }
