@@ -1,4 +1,5 @@
 import express from 'express';
+import{verifyToken} from './utils.js'
 import cors from "cors";
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
@@ -15,7 +16,9 @@ app.use(cors());
 
 app.use('/doc', swaggerUi.serve,   swaggerUi.setup(swaggerDocument));
 app.use('/', index);
-app.use('/data', data);
+app.use('/data', verifyToken, data); 
+//app.use('/refresh', verifyRefreshToken, data); // only for reference
+
 app.use('/login', login);
 
 export default app;

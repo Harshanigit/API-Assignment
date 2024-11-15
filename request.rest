@@ -1,4 +1,6 @@
 GET http://localhost:3000/data
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImprIiwiaWF0IjoxNzMxNjYyMTkyLCJleHAiOjE3MzE2NjU3OTJ9.fxHWdtg98WkJ2LuhJ8DKz3-0t33Thawvemk9sZ7XfXg 
+
 ###
 GET http://localhost:3000/data/1
 ###
